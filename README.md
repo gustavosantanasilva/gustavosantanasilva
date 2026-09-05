@@ -2,70 +2,127 @@
 
 # 👋 Gustavo Santos
 
-### 💻 Desenvolvedor em formação • Full Stack • Criador de projetos
+### 🕹️ Desenvolvedor Full Stack em formação • Pac-Man Player Level 1
 
-<img src="./github-arcade/arcade.gif" alt="Gustavo GitHub Arcade" width="900">
-
-### 🕹️ GUSTAVO'S GITHUB ARCADE
-
-> 🚀 Aprendendo, construindo e transformando ideias em software.
+> *Cada commit é um pellet • Cada projeto é um nível • Cada bug é um fantasma a ser vencido.*
 
 </div>
 
 ---
 
-## 🧑‍💻 Sobre mim
+## 🕹️ O JOGO COMEÇA
 
-Sou estudante e desenvolvedor em formação, apaixonado por programação e por transformar ideias em projetos reais.
+<div align="center">
 
-Meu foco é evoluir como **desenvolvedor Full Stack**, criando aplicações web, APIs, sistemas com banco de dados e experimentando novas tecnologias.
+> 🎮 **Este perfil é um jogo.** Olhe para a cena abaixo — o Pac-Man está percorrendo o mapa comendo pellets enquanto fugia dos fantasmas. No meu mundo, **você (o visitante) acompanha minha jornada de commit em commit, level up em level up.**
 
-```text
-Gustavo Santos
-├── 💻 Desenvolvimento de Software
-├── 🌐 Full Stack
-├── 🐍 Python
-├── 🐘 PHP
-├── ⚡ JavaScript
-├── 🗄️ SQL
-├── 🤖 Inteligência Artificial
-└── 🚀 SaaS & Projetos próprios
-```
+<img src="./github-arcade/pacman-game.svg" alt="Pac-Man Arcade animado" width="900">
+
+</div>
 
 ---
 
-## 🕹️ Meu GitHub virou um jogo
+## 📖 Como funciona o sistema
 
-Cada commit ajuda o Pac-Man a avançar.
+O meu GitHub virou um fliperama. Cada contribuição alimenta um sistema de progressão arcade:
 
-| 🎮 Mecânica | Como funciona |
-|---|---|
-| 🟡 Pellet | Dia com contribuição |
-| 🟢 Power-up | Dia com muita atividade |
-| 👻 Fantasmas | Obstáculos do caminho |
-| 🏆 Score | Baseado nos commits |
-| 🔥 Streak | Sequência de dias ativos |
-| ⭐ Level | Evolui com o score |
+| 🎮 Mecânica | O que significa |
+|:---:|---|
+| 🟡 **Pellet** | Dia com pelo menos 1 commit |
+| 🟢 **Power-Up** | Dia com muita atividade (8+ commits) |
+| 👻 **Fantasma** | Os obstáculos, bugs e procrastinação que enfrento |
+| ⭐ **XP** | Acumulo por cada commit e mais bônus por sequência |
+| 🎮 **Level** | Evolui a cada 500 de XP |
+| 🔥 **Streak** | Sequência de dias seguidos codando |
+| 🏆 **Conquistas** | Badges desbloqueadas por marcos |
 
 <!-- GITHUB_ARCADE_STATS:START -->
 <div align="center">
 
 ### 🏆 Arcade Stats
 
-| 🏆 Score | 🎮 Level | 💻 Commits | 🔥 Streak | 📅 Dias ativos |
-|:---:|:---:|:---:|:---:|:---:|
-| **0** | **1** | **0** | **0** | **0** |
+| 🏆 Score | 🎮 Level | ⭐ XP | 📈 Progresso p/ próximo nível |
+|:---:|:---:|:---:|:---:|
+| **0** | **1** | **0** / **500** | **0.0%** |
+
+| 💻 Commits | 🔥 Streak | 📅 Dias ativos | 🏅 Conquistas |
+|:---:|:---:|:---:|:---:|
+| **0** | **0** | **0** | `🆕 Novo` |
 
 </div>
 <!-- GITHUB_ARCADE_STATS:END -->
 
 ---
 
-## ⚡ Tech Stack
+## 📊 Quadro Geral
 
 <div align="center">
-<img src="https://skillicons.dev/icons?i=python,php,js,html,css,mysql,git,github,docker,linux,vscode" />
+
+<img alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=gustavosantanasilva&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&locale=pt-br" height="170" />
+
+<img alt="Top Langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=gustavosantanasilva&layout=compact&theme=tokyonight&hide_border=true&locale=pt-br" height="170" />
+
+<br><br>
+
+<img alt="GitHub Streak" src="https://streak-stats.demolab.com?user=gustavosantanasilva&theme=tokyonight&hide_border=true&locale=pt_BR" />
+
+<br><br>
+
+<img alt="GitHub Trophy" src="https://github-profile-trophy.vercel.app/?username=gustavosantanasilva&theme=tokyonight&no-bg=true&no-frame=true&column=6" />
+
 </div>
+
+---
+
+## 🐍 A Cobra da Contribuição
+
+<div align="center">
+
+> Enquanto o Pac-Man come os pellets, a Snake engole o mapa. **Contribua tanto que a cobra cresce até o infinito.**
+
+<img src="./github-arcade/contribution-snake.svg" alt="Contribution Snake animada" width="900">
+
+</div>
+
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+<img alt="Pac-Man Player" src="https://skillicons.dev/icons?i=python,php,js,ts,html,css,tailwind,react,nodejs,mysql,git,github,docker,linux,vscode,postman" />
+
+</div>
+
+---
+
+## 🚧 Jornada de Aprendizado
+
+```text
+Python                  ██████████████████░░░░░░░░░░░░░░░  Evoluindo
+JavaScript              ████████████████░░░░░░░░░░░░░░░░░  Evoluindo
+TypeScript              ████████░░░░░░░░░░░░░░░░░░░░░░░░░  Explorando
+PHP                     ██████████████████░░░░░░░░░░░░░░░  Evoluindo
+SQL                     ██████████████████░░░░░░░░░░░░░░░  Praticando
+HTML + CSS              ████████████████████░░░░░░░░░░░░░  Praticando
+React / Node            ██████░░░░░░░░░░░░░░░░░░░░░░░░░░░  Estudando
+Docker                  ██████████░░░░░░░░░░░░░░░░░░░░░░░  Estudando
+Inteligência Artificial ████████░░░░░░░░░░░░░░░░░░░░░░░░░  Explorando
+```
+
+---
+
+## 🗺️ Roadmap (Maze Map)
+
+- [x] 🔹 Fundamentos de programação
+- [x] 🔹 Projetos próprios
+- [x] 🔹 Git e GitHub
+- [ ] 🔸 Full Stack Web
+- [ ] 🔸 SaaS completo
+- [ ] 🔸 APIs & arquitetura
+- [ ] 🔸 Estruturas de dados e algoritmos
+- [ ] 🔸 Inteligência Artificial
+- [ ] 🔸 Open Source & contribuições
 
 ---
 
@@ -73,66 +130,25 @@ Cada commit ajuda o Pac-Man a avançar.
 
 ### 🌐 Nexus Hub
 
-Plataforma para reunir recursos, ferramentas, documentações e materiais para desenvolvedores.
+> Plataforma para reunir recursos, ferramentas, documentações e materiais para desenvolvedores — uma espécie de "mapa do labirinto" para quem está começando.
 
-[→ Ver projeto](https://github.com/gustavosantanasilva/Nexus-Hub)
+[➜ Ver no GitHub](https://github.com/gustavosantanasilva/Nexus-Hub)
 
-### 🧠 Próximos projetos
+### 🧠 Próximas "fases" a desbloquear
 
 🤖 IA • 🚀 SaaS • 🌐 Sistemas Web • 🔌 APIs • 🗄️ Banco de dados • ⚙️ Automação
 
 ---
 
-## 📚 Atualmente estudando
+## 🏆 Conquistas Arcade
 
-```text
-Python                  ████████████████░░  Evoluindo
-JavaScript              ██████████████░░░░  Evoluindo
-PHP                     ██████████████░░░░  Evoluindo
-SQL                     ███████████████░░░  Praticando
-HTML + CSS              █████████████████░  Praticando
-Git + GitHub             ████████████████░░  Praticando
-Docker                  ██████████░░░░░░░░  Estudando
-Inteligência Artificial ████████░░░░░░░░░░  Explorando
-```
+Evolua comigo:
 
----
-
-## 🎯 Roadmap
-
-- [x] Fundamentos de programação
-- [x] Projetos próprios
-- [x] Git e GitHub
-- [ ] Full Stack
-- [ ] SaaS completo
-- [ ] APIs e arquitetura
-- [ ] Estruturas de dados
-- [ ] Inteligência Artificial
-- [ ] Open Source
-
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=gustavosantanasilva&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" />
-
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=gustavosantanasilva&layout=compact&theme=tokyonight&hide_border=true" />
-
-<br><br>
-
-<img src="https://streak-stats.demolab.com?user=gustavosantanasilva&theme=tokyonight&hide_border=true" />
-
-</div>
-
----
-
-## 🐍 Contribution Snake
-
-<div align="center">
-<img src="./github-arcade/contribution-snake.svg" alt="Contribution Snake" width="850">
-</div>
+| 🥉 Bronze | 🥈 Prata | 🥇 Ouro |
+|:---|:---|:---|
+| 🎮 Rookie (1 commit) | ⚡ Coder (50) | 🔥 Grinder (150) |
+| 📅 Week (Streak 7d) | 📆 Month (Streak 30d) | 🚀 Build (400 commits) |
+| — | 💪 Active (150 dias) | 🏆 Legend (1000 commits) |
 
 ---
 
@@ -140,8 +156,12 @@ Inteligência Artificial ████████░░░░░░░░░░ 
 
 <div align="center">
 
-<a href="https://github.com/gustavosantanasilva"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"></a>
-<a href="https://www.linkedin.com/in/gustavo-santos-13111a385/"><img src="https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=for-the-badge&logo=linkedin"></a>
+<a href="https://github.com/gustavosantanasilva">
+  <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github" />
+</a>
+<a href="https://www.linkedin.com/in/gustavo-santos-13111a385/">
+  <img src="https://img.shields.io/badge/LinkedIn-Conecte--se-0A66C2?style=for-the-badge&logo=linkedin" />
+</a>
 
 </div>
 
@@ -149,9 +169,8 @@ Inteligência Artificial ████████░░░░░░░░░░ 
 
 <div align="center">
 
-### 🟡 KEEP CODING • KEEP BUILDING • KEEP LEVELING UP 👾
+### 🟡 INSIRA SUA MOEDA • PRESSIONE START • JOGUE A VIDA TODA 👾
 
-<img src="https://komarev.com/ghpvc/?username=gustavosantanasilva&style=flat-square&color=blueviolet" alt="Profile views">
+<img src="https://komarev.com/ghpvc/?username=gustavosantanasilva&style=flat-square&color=blueviolet" alt="Profile views" />
 
 </div>
-# gustavosantanasilva
