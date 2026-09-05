@@ -1,4 +1,4 @@
-name: 🕹️ Update Gustavo's GitHub Arcade
+name: 🚀 Update Gustavo's Profile
 
 on:
   push:
@@ -19,18 +19,13 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Update Arcade data
+      - name: Refresh stats & bento grid
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: python github-arcade/scripts/update_arcade.py
 
-      - name: Generate animated Pac-Man
-        run: |
-          python -m pip install pillow
-          python github-arcade/scripts/generate_animation.py
-
-      - name: Generate contribution visual
+      - name: Generate contribution trail
         run: python github-arcade/scripts/generate_snake.py
 
       - name: Commit generated files
@@ -38,5 +33,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md github-arcade/
-          git diff --cached --quiet || git commit -m "chore: update GitHub Arcade"
+          git diff --cached --quiet || git commit -m "chore: refresh profile stats"
           git push

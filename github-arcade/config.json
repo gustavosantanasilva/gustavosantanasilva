@@ -5,17 +5,17 @@
   "level_every": 500,
   "frames": 24,
   "theme": {
-    "background": "#05050a",
-    "panel": "#0b1020",
-    "wall": "#3557ff",
-    "pellet": "#ffe45c",
-    "pacman": "#ffd21f",
+    "background": "#0b1020",
+    "panel": "#ffffff",
+    "wall": "#818cf8",
+    "pellet": "#67e8f9",
+    "pacman": "#a5b4fc",
     "ghost1": "#ff4d6d",
     "ghost2": "#ff78b7",
     "ghost3": "#61e7ff",
     "ghost4": "#ff9d4d",
     "text": "#ffffff",
-    "muted": "#8d99ae",
-    "power": "#67e8f9"
+    "muted": "#94a3b8",
+    "power": "#22d3ee"
   }
 }
