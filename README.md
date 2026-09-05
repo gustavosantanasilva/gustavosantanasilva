@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./github-arcade/hero-glass.svg" alt="Gustavo Santos" width="900">
+  <img src="./github-arcade/hero-glass.svg?v=2" alt="Gustavo Santos" width="900">
 </p>
 
 <br>
@@ -7,7 +7,7 @@
 <!-- GITHUB_ARCADE_STATS:START -->
 <div align="center">
 
-<img src="./github-arcade/contribution-panel.svg" alt="Commit Constellation" width="900">
+<img src="./github-arcade/contribution-panel.svg?v=20260905" alt="Commit Constellation" width="900">
 
 </div>
 <!-- GITHUB_ARCADE_STATS:END -->
@@ -53,13 +53,13 @@
 <h3 align="center">📫 Let's Connect</h3>
 
 <p align="center">
-  <img src="./github-arcade/social-icons.svg" alt="Redes sociais" width="360">
+  <img src="./github-arcade/social-icons.svg?v=2" alt="Redes sociais" width="360">
 </p>
 
 <br>
 
 <div align="center">
-  <img src="./github-arcade/section-divider.svg" alt="" width="900">
+  <img src="./github-arcade/section-divider.svg?v=2" alt="" width="900">
   <p align="center">
     <img src="https://komarev.com/ghpvc/?username=gustavosantanasilva&style=flat-square&color=818cf8" alt="profile views">
   </p>

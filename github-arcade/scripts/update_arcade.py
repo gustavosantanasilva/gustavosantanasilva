@@ -200,10 +200,11 @@ def contribution_svg(days, total, st, active_days):
 def stats_block(total, st, active_days):
     a="<!-- GITHUB_ARCADE_STATS:START -->"
     b="<!-- GITHUB_ARCADE_STATS:END -->"
+    ver=datetime.now(timezone.utc).strftime("%Y%m%d%H")
     block=f'''{a}
 <div align="center">
 
-<img src="./github-arcade/contribution-panel.svg" alt="Commit Constellation" width="900">
+<img src="./github-arcade/contribution-panel.svg?v={ver}" alt="Commit Constellation" width="900">
 
 </div>
 {b}'''
