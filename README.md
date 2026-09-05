@@ -43,11 +43,11 @@ O meu GitHub virou um fliperama. Cada contribuição alimenta um sistema de prog
 
 | 🏆 Score | 🎮 Level | ⭐ XP | 📈 Progresso p/ próximo nível |
 |:---:|:---:|:---:|:---:|
-| **0** | **1** | **0** / **500** | **0.0%** |
+| **49** | **1** | **495** / **500** | **99.0%** |
 
 | 💻 Commits | 🔥 Streak | 📅 Dias ativos | 🏅 Conquistas |
 |:---:|:---:|:---:|:---:|
-| **0** | **0** | **0** | `🆕 Novo` |
+| **38** | **1** | **15** | `🎮 Rookie` |
 
 </div>
 <!-- GITHUB_ARCADE_STATS:END -->
