@@ -38,7 +38,7 @@ def streak(days):
 
 # ---- heatmap grid, same layout as GitHub contribution graph ----
 CELL=11; GAP=3; PITCH=CELL+GAP
-DAYS_LABEL=["Mon","Wed","Fri"]
+DAYS_LABEL=["Seg","Qua","Sex"]
 
 def build_weeks(days):
     end=datetime.now(timezone.utc).date()
@@ -55,6 +55,96 @@ def build_weeks(days):
         cur+=timedelta(days=7)
     return weeks
 
+# ---- top languages (aggregated over public repos) ----
+LANG_COLORS={
+    "Python":"#3776ab","PHP":"#777bb4","JavaScript":"#f1e05a","TypeScript":"#3178c6",
+    "HTML":"#e34c26","CSS":"#563d7c","MySQL":"#4479a1","Docker":"#2496ed",
+    "Shell":"#89e051","Java":"#b07219","C":"#555555","C++":"#f34b7d",
+    "C#":"#178600","Go":"#00adda","Rust":"#dea584","Dart":"#00b4ab",
+    "Kotlin":"#b125ea","Ruby":"#cc342d","Swift":"#f05138","Lua":"#000080",
+}
+FALLBACK_LANG="#7c8cf8"
+
+def get_top_langs():
+    langs={}
+    page=1
+    while page<=10:
+        try:
+            repos=api(f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}&visibility=public")
+        except Exception: break
+        if not isinstance(repos,list) or not repos: break
+        for repo in repos:
+            name=repo.get("name")
+            if not name or repo.get("fork"): continue
+            try:
+                data=api(f"https://api.github.com/repos/{USER}/{name}/languages")
+            except Exception: continue
+            for k,v in data.items():
+                langs[k]=langs.get(k,0)+v
+        if len(repos)<100: break
+        page+=1
+    return langs
+
+def top_langs_svg(langs):
+    t=CFG["theme"]
+    if not langs:
+        langs={"#0 (nenhum repo público)":0}
+    top=sorted(langs.items(), key=lambda kv:-kv[1])[:5]
+    total=sum(langs.values()) or 1
+    W=430; H=250
+
+    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Top Linguagens de Gustavo Santos">']
+    s.append('<defs>')
+    s.append('<linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">')
+    s.append('<stop offset="0" stop-color="#05070f"/><stop offset="0.5" stop-color="#0b1020"/><stop offset="1" stop-color="#141b3c"/>')
+    s.append('</linearGradient>')
+    s.append('<radialGradient id="langNeb" cx="0.5" cy="0.5" r="0.5">')
+    s.append('<stop offset="0" stop-color="#6366f1" stop-opacity="0.22"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/>')
+    s.append('</radialGradient>')
+    s.append('<linearGradient id="langEdge" x1="0" y1="0" x2="1" y2="1">')
+    s.append('<stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>')
+    s.append('</linearGradient>')
+    # per-language bar gradients
+    for i,(name,_) in enumerate(top):
+        c=LANG_COLORS.get(name,FALLBACK_LANG)
+        s.append(f'<linearGradient id="barG{i}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{c}"/><stop offset="1" stop-color="#ffffff"/></linearGradient>')
+    s.append('</defs>')
+
+    s.append(f'<rect width="{W}" height="{H}" rx="22" fill="url(#langBg)"/>')
+    s.append(f'<circle cx="{W-40}" cy="30" r="70" fill="url(#langNeb)"/>')
+    s.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" rx="22" fill="none" stroke="url(#langEdge)" stroke-width="1.4"/>')
+
+    # header (Portuguese)
+    s.append('<circle cx="24" cy="30" r="6" fill="#67e8f9" opacity="0.85"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2.6s" repeatCount="indefinite"/></circle>')
+    s.append(f'<text x="40" y="35" fill="{t["text"]}" font-family="sans-serif" font-size="19" font-weight="800">Top Linguagens</text>')
+    s.append(f'<text x="40" y="55" fill="{t["muted"]}" font-family="sans-serif" font-size="12">volume de código em repositórios públicos</text>')
+
+    # divider
+    s.append(f'<line x1="24" y1="72" x2="{W-24}" y2="72" stroke="#818cf8" stroke-opacity="0.25" stroke-width="1"/>')
+
+    # rows: name | percent | animated bar
+    ry=88
+    for i,(name,bytes_) in enumerate(top):
+        bp=bytes_/total*100
+        hx=46
+        bw=320
+        w=bw*bp/100
+        c=LANG_COLORS.get(name,FALLBACK_LANG)
+        s.append(f'<circle cx="32" cy="{ry+7}" r="4" fill="{c}"/>')
+        s.append(f'<text x="46" y="{ry+11}" fill="#e2e8f0" font-family="monospace" font-size="13" font-weight="600">{name}</text>')
+        s.append(f'<text x="406" y="{ry+11}" text-anchor="end" fill="{t["power"]}" font-family="monospace" font-size="12.5" font-weight="700">{bp:.1f}%</text>')
+        # track
+        s.append(f'<rect x="{hx}" y="{ry+18}" width="{bw}" height="8" rx="4" fill="#1c2546"/>')
+        # fill (animates once on load)
+        s.append(f'<rect x="{hx}" y="{ry+18}" width="{w:.1f}" height="8" rx="4" fill="url(#barG{i})"><animate attributeName="width" from="0" to="{w:.1f}" dur="1.1s" begin="{i*0.15:.2f}s" fill="freeze"/></rect>')
+        ry+=44
+
+    # footer
+    s.append(f'<text x="24" y="{H-14}" fill="{t["muted"]}" font-family="sans-serif" font-size="10.5">atualizado automaticamente · via GitHub Actions</text>')
+
+    s.append('</svg>')
+    return "".join(s)
+
 def contribution_svg(days, total, st, active_days):
     t=CFG["theme"]; weeks=build_weeks(days)
     ncols=len(weeks)
@@ -66,7 +156,7 @@ def contribution_svg(days, total, st, active_days):
     star_cols=["#7c8cf8","#5eead4","#a5f3fc","#ffffff"]
     empty_col="#1c2546"
 
-    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Gustavo Santos - Commit Constellation">']
+    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Gustavo Santos - Constelação de Commits">']
     s.append('<defs>')
     s.append('<linearGradient id="spaceGrad" x1="0" y1="0" x2="0" y2="1">')
     s.append(f'<stop offset="0" stop-color="#05070f"/><stop offset="0.5" stop-color="{t["background"]}"/><stop offset="1" stop-color="#141b3c"/>')
@@ -108,26 +198,27 @@ def contribution_svg(days, total, st, active_days):
         s.append(f'<circle cx="{xs}" cy="{ys}" r="{rad}" fill="#9aa9ff" opacity="{rng.uniform(0.12,0.35):.2f}"/>')
 
     # header
-    s.append(f'<text x="36" y="44" fill="{t["text"]}" font-family="sans-serif" font-size="22" font-weight="800">Commit Constellation</text>')
-    s.append(f'<text x="36" y="68" fill="{t["muted"]}" font-family="sans-serif" font-size="13">{total:,} commits in the last year · {active_days} active days</text>')
+    s.append(f'<text x="36" y="44" fill="{t["text"]}" font-family="sans-serif" font-size="22" font-weight="800">Constelação de Commits</text>')
+    s.append(f'<text x="36" y="68" fill="{t["muted"]}" font-family="sans-serif" font-size="13">{total:,} commits no último ano · {active_days} dias ativos</text>')
 
     # right-side stat chips (mini planets)
     s.append(f'<circle cx="{W-168}" cy="40" r="14" fill="{t["pellet"]}" opacity="0.18"/>')
     s.append(f'<circle cx="{W-168}" cy="40" r="14" fill="none" stroke="{t["power"]}" stroke-opacity="0.5" stroke-dasharray="3 3"/>')
     s.append(f'<text x="{W-168}" y="45" text-anchor="middle" fill="{t["power"]}" font-family="monospace" font-size="13" font-weight="700">{st}</text>')
-    s.append(f'<text x="{W-146}" y="45" fill="{t["muted"]}" font-family="sans-serif" font-size="13">streak</text>')
+    s.append(f'<text x="{W-146}" y="45" fill="{t["muted"]}" font-family="sans-serif" font-size="13">sequência</text>')
     s.append(f'<circle cx="{W-92}" cy="40" r="14" fill="{t["power"]}" opacity="0.18"/>')
     s.append(f'<circle cx="{W-92}" cy="40" r="14" fill="none" stroke="{t["pellet"]}" stroke-opacity="0.5" stroke-dasharray="3 3"/>')
     s.append(f'<text x="{W-92}" y="45" text-anchor="middle" fill="{t["pellet"]}" font-family="monospace" font-size="13" font-weight="700">{active_days}</text>')
-    s.append(f'<text x="{W-70}" y="45" fill="{t["muted"]}" font-family="sans-serif" font-size="13">days</text>')
+    s.append(f'<text x="{W-70}" y="45" fill="{t["muted"]}" font-family="sans-serif" font-size="13">dias</text>')
 
-    # month labels
+    # month labels (português)
+    MONTHS_PT=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]
     first_week_start=datetime.now(timezone.utc).date()-timedelta(days=CFG["recent_days"])
     first_week_start=first_week_start-timedelta(days=first_week_start.weekday())
     prev=""
     for i in range(ncols):
         d=first_week_start+timedelta(weeks=i)
-        mth=d.strftime("%b")
+        mth=MONTHS_PT[d.month-1]
         if mth!=prev:
             s.append(f'<text x="{92+i*PITCH}" y="96" fill="{t["muted"]}" font-family="sans-serif" font-size="11">{mth}</text>')
             prev=mth
@@ -187,12 +278,12 @@ def contribution_svg(days, total, st, active_days):
 
     # footer + legend
     gy=top+7*PITCH+14
-    s.append(f'<text x="90" y="{top+7*PITCH+26}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">✧ every commit shines as a star in the galaxy</text>')
+    s.append(f'<text x="90" y="{top+7*PITCH+26}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">✧ cada commit brilha como uma estrela na galáxia</text>')
     lx=W-230
-    s.append(f'<text x="{lx}" y="{gy+12}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">Less</text>')
+    s.append(f'<text x="{lx}" y="{gy+12}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">Menos</text>')
     for k,c in enumerate(star_cols):
-        s.append(f'<circle cx="{lx+54+k*(CELL+4)}" cy="{gy+6}" r="4" fill="{c}"/>')
-    s.append(f'<text x="{lx+54+4*(CELL+4)}" y="{gy+12}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">More</text>')
+        s.append(f'<circle cx="{lx+60+k*(CELL+4)}" cy="{gy+6}" r="4" fill="{c}"/>')
+    s.append(f'<text x="{lx+60+4*(CELL+4)}" y="{gy+12}" fill="{t["muted"]}" font-family="sans-serif" font-size="11">Mais</text>')
 
     s.append('</svg>')
     return "".join(s)
@@ -204,11 +295,30 @@ def stats_block(total, st, active_days):
     block=f'''{a}
 <div align="center">
 
-<img src="./github-arcade/contribution-panel.svg?v={ver}" alt="Commit Constellation" width="900">
+<img src="./github-arcade/contribution-panel.svg?v={ver}" alt="Constelação de Commits" width="900">
 
 </div>
 {b}'''
     return a, b, block
+
+def langs_block_text():
+    a="<!-- GITHUB_ARCADE_LANGS:START -->"
+    b="<!-- GITHUB_ARCADE_LANGS:END -->"
+    ver=datetime.now(timezone.utc).strftime("%Y%m%d%H")
+    block=f'''{a}
+<div align="center">
+
+<img src="./github-arcade/top-langs.svg?v={ver}" alt="Top Linguagens" width="430">
+
+</div>
+{b}'''
+    return a, b, block
+
+def replace_block(text, a, b, block):
+    before,sep,rest=text.partition(a)
+    if not sep: return text
+    rest=rest.partition(b)[2]
+    return before+block+rest
 
 def main():
     days=get_days()
@@ -219,12 +329,22 @@ def main():
     (ROOT/"contribution-panel.svg").write_text(
         contribution_svg(days,total,st,active_days),encoding="utf-8")
 
+    langs=get_top_langs()
+    (ROOT/"top-langs.svg").write_text(top_langs_svg(langs),encoding="utf-8")
+
     readme=ROOT.parent/"README.md"
     text=readme.read_text(encoding="utf-8")
+
     a,b,block=stats_block(total,st,active_days)
-    before,rest=text.split(a,1)
-    _,after=rest.split(b,1)
-    readme.write_text(before+block+after,encoding="utf-8")
+    text=replace_block(text,a,b,block)
+
+    la,lb,lblock=langs_block_text()
+    if "GITHUB_ARCADE_LANGS:START" in text:
+        text=replace_block(text,la,lb,lblock)
+    else:
+        text=text.replace(b, lblock+"\n\n"+b, 1)
+
+    readme.write_text(text,encoding="utf-8")
 
 if __name__=="__main__":
     main()
