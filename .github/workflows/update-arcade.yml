@@ -19,14 +19,11 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Refresh stats & bento grid
+      - name: Refresh stats & contribution panel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: python github-arcade/scripts/update_arcade.py
-
-      - name: Generate contribution trail
-        run: python github-arcade/scripts/generate_snake.py
 
       - name: Commit generated files
         run: |
