@@ -7,7 +7,7 @@
 <!-- GITHUB_ARCADE_STATS:START -->
 <div align="center">
 
-<img src="./github-arcade/contribution-panel.svg" alt="Contribution Graph" width="900">
+<img src="./github-arcade/contribution-panel.svg" alt="Commit Constellation" width="900">
 
 </div>
 <!-- GITHUB_ARCADE_STATS:END -->
