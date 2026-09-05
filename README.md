@@ -14,7 +14,7 @@
 
 <br><br>
 
-<h3 align="center">📊 Estatísticas do GitHub</h3>
+<h3 align="center">🧠 Top Linguagens</h3>
 
 <div align="center">
 
@@ -25,8 +25,6 @@
 
 </div>
 <!-- GITHUB_ARCADE_LANGS:END -->
-
-<img alt="Estatísticas do GitHub de Gustavo" src="https://github-readme-stats.vercel.app/api?username=gustavosantanasilva&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github" width="430" />
 
 </div>
 
