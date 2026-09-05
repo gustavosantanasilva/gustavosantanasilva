@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-label="Gustavo Santos - Full Stack Developer">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.6" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#818cf8" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="nameGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="0.5" stop-color="#a5b4fc"/>
+      <stop offset="1" stop-color="#f0abfc"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="blurCard">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="320" rx="26" fill="url(#bgGrad)"/>
+
+  <!-- ambient glow orbs -->
+  <circle cx="120" cy="60" r="120" fill="url(#glow)" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="760" cy="260" r="150" fill="url(#glow)" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- floating particles -->
+  <g fill="#ffffff">
+    <circle cx="60" cy="240" r="2" opacity="0.6"><animate attributeName="cy" values="250;210;250" dur="7s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.1;0.6" dur="7s" repeatCount="indefinite"/></circle>
+    <circle cx="150" cy="80" r="1.5" opacity="0.5"><animate attributeName="cy" values="90;50;90" dur="9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="9s" repeatCount="indefinite"/></circle>
+    <circle cx="840" cy="90" r="2.2" opacity="0.6"><animate attributeName="cy" values="100;60;100" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.15;0.6" dur="6s" repeatCount="indefinite"/></circle>
+    <circle cx="700" cy="200" r="1.5" opacity="0.5"><animate attributeName="cy" values="210;170;210" dur="8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="8s" repeatCount="indefinite"/></circle>
+    <circle cx="40" cy="140" r="1.8" opacity="0.5"><animate attributeName="cy" values="150;110;150" dur="7.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="7.5s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- glass card -->
+  <rect x="30" y="28" width="840" height="264" rx="22" fill="url(#glass)" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <rect x="34" y="32" width="832" height="256" rx="19" fill="#ffffff" fill-opacity="0.03"/>
+  <line x1="60" y1="90" x2="840" y2="90" stroke="#ffffff" stroke-opacity="0.1"/>
+
+  <!-- 3D orb -->
+  <circle cx="150" cy="160" r="70" fill="url(#glow)" filter="url(#softGlow)"/>
+  <circle cx="150" cy="160" r="34" fill="#a5b4fc">
+    <animate attributeName="r" values="32;36;32" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="160" r="34" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1.5">
+    <animate attributeName="r" values="34;52;34" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0;0.6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="160" r="34" fill="none" stroke="#67e8f9" stroke-opacity="0.6" stroke-width="1">
+    <animate attributeName="r" values="34;70;34" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0;0.5" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <ellipse cx="150" cy="160" rx="30" ry="20" fill="#ffffff" opacity="0.35">
+    <animate attributeName="opacity" values="0.35;0.6;0.35" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- code face on orb -->
+  <g font-family="monospace" font-size="30" fill="#0f172a" opacity="0.9">
+    <text x="140" y="168">&lt;/&gt;</text>
+  </g>
+
+  <!-- name + role -->
+  <text x="230" y="150" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="url(#nameGrad)">Gustavo Santos</text>
+  <text x="234" y="184" font-family="monospace" font-size="17" fill="#cbd5e1">Full Stack Developer</text>
+
+  <!-- animated typing bar -->
+  <rect x="392" y="172" width="12" height="20" rx="2" fill="#67e8f9">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- chips -->
+  <g font-family="monospace" font-size="13">
+    <rect x="230" y="210" width="86" height="26" rx="13" fill="#ffffff" fill-opacity="0.08" stroke="#67e8f9" stroke-opacity="0.5"/>
+    <text x="273" y="227" text-anchor="middle" fill="#a5f3fc">Python</text>
+    <rect x="326" y="210" width="96" height="26" rx="13" fill="#ffffff" fill-opacity="0.08" stroke="#a5b4fc" stroke-opacity="0.5"/>
+    <text x="374" y="227" text-anchor="middle" fill="#c7d2fe">JavaScript</text>
+    <rect x="432" y="210" width="72" height="26" rx="13" fill="#ffffff" fill-opacity="0.08" stroke="#f0abfc" stroke-opacity="0.5"/>
+    <text x="468" y="227" text-anchor="middle" fill="#f5d0fe">PHP</text>
+    <rect x="514" y="210" width="90" height="26" rx="13" fill="#ffffff" fill-opacity="0.08" stroke="#22d3ee" stroke-opacity="0.5"/>
+    <text x="559" y="227" text-anchor="middle" fill="#a5f3fc">SQL</text>
+    <rect x="614" y="210" width="130" height="26" rx="13" fill="#ffffff" fill-opacity="0.08" stroke="#818cf8" stroke-opacity="0.5"/>
+    <text x="679" y="227" text-anchor="middle" fill="#c7d2fe">Git &amp; GitHub</text>
+  </g>
+
+  <!-- status line -->
+  <circle cx="234" cy="262" r="5" fill="#4ade80">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="248" y="267" font-family="monospace" font-size="13" fill="#94a3b8">open to building awesome things</text>
+</svg>

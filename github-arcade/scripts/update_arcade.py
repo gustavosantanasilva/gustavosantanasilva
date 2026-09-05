@@ -57,41 +57,29 @@ def arcade_svg(days, score, level, total, st, xp, xp_next, prog, badges):
 </defs>
 <rect width="900" height="430" rx="24" fill="{t["background"]}"/>
 <text x="48" y="52" fill="{t["text"]}" font-family="monospace" font-size="26" font-weight="700">GUSTAVO'S GITHUB ARCADE</text>
-<text x="48" y="80" fill="{t["muted"]}" font-family="monospace" font-size="13">COMMITS → SCORE → LEVEL → PROGRESS</text>
 <text x="640" y="52" fill="{t["pellet"]}" font-family="monospace" font-size="17" font-weight="700">SCORE {score:,}</text>
 <text x="640" y="78" fill="{t["power"]}" font-family="monospace" font-size="17" font-weight="700">LEVEL {level} ★</text>
 <text x="640" y="104" fill="{t["text"]}" font-family="monospace" font-size="12">COMMITS {total:,} • STREAK {st} 🔥</text>
-
-<text x="48" y="118" fill="{t["muted"]}" font-family="monospace" font-size="12">■ LEVEL PROGRESS • {xp:,} / {xp_next:,} XP • {prog*100:.1f}%</text>
+<text x="48" y="118" fill="{t["muted"]}" font-family="monospace" font-size="12">■ LEVEL PROGRESS • {prog*100:.1f}%</text>
 <rect x="40" y="128" width="820" height="17" rx="8" fill="{t["panel"]}" stroke="{t["wall"]}" stroke-width="2"/>
 <rect x="44" y="132" width="{bar}" height="9" rx="4" fill="url(#prog)"/>
-
 <rect x="40" y="170" width="820" height="150" rx="12" fill="{t["panel"]}" stroke="{t["wall"]}" stroke-width="5"/>
 {dots}
 <circle cx="110" cy="240" r="13" fill="{t["pacman"]}"/>
 <path d="M110 240 L123 232 A15 15 0 0 1 123 248 Z" fill="{t["background"]}"/>
-
-<text x="48" y="350" fill="{t["muted"]}" font-family="monospace" font-size="12">● COMMIT DAY   ◆ POWER-UP   👻 OBSTACLE</text>
-<text x="48" y="378" fill="{t["text"]}" font-family="monospace" font-size="16" font-weight="700">🏆 CONQUISTAS DESBLOQUEADAS</text>
+<text x="48" y="350" fill="{t["text"]}" font-family="monospace" font-size="16" font-weight="700">🏆 CONQUISTAS</text>
 {badge_row}
 </svg>'''
 
 def stats_block(score, level, total, st, days, xp, xp_next, prog, badges):
     a="<!-- GITHUB_ARCADE_STATS:START -->"
     b="<!-- GITHUB_ARCADE_STATS:END -->"
-    badge_line=" ".join(f"`{x}`" for x in badges)
     block=f'''{a}
 <div align="center">
 
-### 🏆 Arcade Stats
-
-| 🏆 Score | 🎮 Level | ⭐ XP | 📈 Progresso p/ próximo nível |
+| ⭐ XP | 🎮 Lv | 💻 Commits | 🔥 Streak |
 |:---:|:---:|:---:|:---:|
-| **{score:,}** | **{level}** | **{xp:,}** / **{xp_next:,}** | **{prog*100:.1f}%** |
-
-| 💻 Commits | 🔥 Streak | 📅 Dias ativos | 🏅 Conquistas |
-|:---:|:---:|:---:|:---:|
-| **{total:,}** | **{st}** | **{len(days)}** | {badge_line} |
+| **{xp:,}** | **{level}** | **{total:,}** | **{st}** |
 
 </div>
 {b}'''
