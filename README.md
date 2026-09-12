@@ -7,7 +7,7 @@
 <!-- GITHUB_ARCADE_STATS:START -->
 <div align="center">
 
-<img src="./github-arcade/contribution-panel.svg?v=2026091204" alt="Constelação de Commits" width="900">
+<img src="./github-arcade/contribution-panel.svg?v=2026091210" alt="Constelação de Commits" width="900">
 
 </div>
 <!-- GITHUB_ARCADE_STATS:END -->
@@ -21,7 +21,7 @@
 <!-- GITHUB_ARCADE_LANGS:START -->
 <div align="center">
 
-<img src="./github-arcade/top-langs.svg?v=2026091204" alt="Top Linguagens" width="430">
+<img src="./github-arcade/top-langs.svg?v=2026091210" alt="Top Linguagens" width="430">
 
 </div>
 <!-- GITHUB_ARCADE_LANGS:END -->
